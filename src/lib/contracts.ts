@@ -94,21 +94,19 @@ export const VILLAGE_CITIZENSHIP_ABI = [
   "event VillageUpdated(uint256 indexed villageId, string name, uint256 membershipFee)"
 ];
 
-// TODO: Debug Internal JSON-RPC error - Bugbot analysis needed
-// Current issue: Contract addresses updated but still getting JSON-RPC errors
-// Need to investigate contract verification and interaction patterns
+// Contract addresses (Avalanche Fuji Testnet) - Updated with newly deployed contracts
 
 export const CONTRACT_ADDRESSES = {
   // Legacy contracts (UPDATED WITH REAL FUJI ADDRESSES)
-  MORTGAGE_PROTOCOL: '0x65F94D3F0f8E631f6053b9F4c56BaE9517EE08e7', // Updated to use AncientMortgageProtocol address
-  MAZUNTE_VILLAGE: '0x2f89095302C43D4142fF80607ba0CFe475f3d21a', // Updated to use new VillageCitizenship address
+  MORTGAGE_PROTOCOL: '0x37b545334115457834b5A41cEce78758E068e7ff', // Updated to use AncientMortgageProtocol address
+  MAZUNTE_VILLAGE: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // Updated to use new VillageCitizenship address
   
   // Ancient Mortgage Protocol contracts (DEPLOYED TO FUJI TESTNET)
-  ANCIENT_MORTGAGE_PROTOCOL: '0x65F94D3F0f8E631f6053b9F4c56BaE9517EE08e7', // Deployed to Fuji testnet
-  MOCK_USDT: '0x0752217fdd32290cb832dd0AA91EBDd5E1A47199', // Deployed to Fuji testnet
+  ANCIENT_MORTGAGE_PROTOCOL: '0x37b545334115457834b5A41cEce78758E068e7ff', // Deployed to Fuji testnet
+  MOCK_USDT: '0x3eB9F6D4B94409045ADabb07802e7182B77fC3D0', // Deployed to Fuji testnet
   
   // Village Citizenship contract (DEPLOYED TO FUJI TESTNET)
-  VILLAGE_CITIZENSHIP: '0x2f89095302C43D4142fF80607ba0CFe475f3d21a', // Deployed to Fuji testnet
+  VILLAGE_CITIZENSHIP: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // Deployed to Fuji testnet
 };
 
 // Network configuration
