@@ -165,11 +165,11 @@ export class AncientMortgageProtocol {
   }
 
   // Property Purchase
-  async purchaseProperty(purchasePrice: number, downPayment: number) {
+  async purchaseProperty(purchasePrice: number, downPayment: number, propertyMetadata: string) {
     // First approve USDT spending
     await this.approveUSDT(downPayment);
     
-    const tx = await this.contract.purchaseProperty(purchasePrice, downPayment);
+    const tx = await this.contract.purchaseProperty(purchasePrice, downPayment, propertyMetadata);
     const receipt = await tx.wait();
     return receipt;
   }
