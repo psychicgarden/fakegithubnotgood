@@ -144,10 +144,16 @@ contract AncientMortgage is ERC721, Ownable, ReentrancyGuard {
         property.paymentsMade = property.paymentsMade.add(1);
         property.lastPaymentDate = block.timestamp;
         
-        // Send interest to staking pool
+        // Calculate and distribute interest (8% APR split)
         uint256 interestAmount = calculateInterestPayment(property.mortgageAmount, property.paymentsMade);
         if (interestAmount > 0) {
-            require(usdtToken.transfer(stakingPool, interestAmount), "Interest transfer failed");
+            // 7.5% goes to staking pool (lenders)
+            uint256 stakingPoolShare = (interestAmount * 75) / 80; // 7.5% of 8%
+            // 0.5% goes to Ancient treasury
+            uint256 treasuryShare = (interestAmount * 5) / 80; // 0.5% of 8%
+            
+            require(usdtToken.transfer(stakingPool, stakingPoolShare), "Staking pool interest transfer failed");
+            require(usdtToken.transfer(treasuryWallet, treasuryShare), "Treasury interest transfer failed");
         }
         
         emit MortgagePaymentMade(propertyId, msg.sender, paymentAmount, property.paymentsMade);
