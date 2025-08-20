@@ -16,6 +16,7 @@ import {
   Send
 } from "lucide-react";
 import { useState } from "react";
+import { SimpleTokenTest } from "@/components/SimpleTokenTest";
 
 const AdminDashboard = () => {
   const [isDeploying, setIsDeploying] = useState(false);
@@ -117,6 +118,22 @@ const AdminDashboard = () => {
           </TabsList>
 
           <TabsContent value="smart-contracts" className="space-y-6">
+            {/* Simple Token Purchase Test */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Rocket className="h-5 w-5 mr-2" />
+                  🚀 Simple Token Purchase Test
+                </CardTitle>
+                <CardDescription>
+                  Test real blockchain transactions with the SimpleTokenPurchase contract
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <SimpleTokenTest />
+              </CardContent>
+            </Card>
+
             {/* Smart Contract Deployment */}
             <Card>
               <CardHeader>

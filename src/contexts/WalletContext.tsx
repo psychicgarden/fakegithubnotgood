@@ -167,8 +167,12 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         description: `Purchasing ${tokens.toLocaleString()} MAZUNTE tokens for $${investmentAmount.toLocaleString()}...`,
       });
 
-      // Use Ancient Mortgage Protocol for token purchase
-      const tx = await ancientMortgageProtocol.purchaseProperty(propertyValue, investmentAmount);
+      // First verify KYC (required before purchase)
+      await ancientMortgageProtocol.verifyKYC(account, investmentAmount);
+      
+      // Use Ancient Mortgage Protocol for token purchase (requires propertyMetadata)
+      const propertyMetadata = `MAZUNTE_VILLAGE_PROPERTY_${Date.now()}`;
+      const tx = await ancientMortgageProtocol.purchaseProperty(propertyValue, investmentAmount, propertyMetadata);
       
       toast({
         title: "Success! You are now a Mazunte Village Founding Citizen",
@@ -216,7 +220,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
       // Use Village Citizenship contract for village membership
       const value = ethers.utils.parseEther((membershipFee / 1000).toString()); // Convert to AVAX
-      const tx = await villageCitizenship.purchaseCitizenship(villageId, { value });
+      const tx = await villageCitizenship.purchaseCitizenship(villageId, { value: value.toString() });
       const receipt = await tx.wait();
       
       toast({

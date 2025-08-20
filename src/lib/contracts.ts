@@ -94,18 +94,20 @@ export const VILLAGE_CITIZENSHIP_ABI = [
   "event VillageUpdated(uint256 indexed villageId, string name, uint256 membershipFee)"
 ];
 
-// Contract addresses (Avalanche Fuji Testnet)
+// Contract addresses (Avalanche Fuji Testnet) - Updated with newly deployed contracts
+
 export const CONTRACT_ADDRESSES = {
-  // Legacy contracts (UPDATED WITH REAL FUJI ADDRESSES)
-  MORTGAGE_PROTOCOL: '0x65F94D3F0f8E631f6053b9F4c56BaE9517EE08e7', // Updated to use AncientMortgageProtocol address
-  MAZUNTE_VILLAGE: '0x2f89095302C43D4142fF80607ba0CFe475f3d21a', // Updated to use new VillageCitizenship address
+  // REAL MORTGAGE SYSTEM CONTRACTS (DEPLOYED TO FUJI TESTNET) - CORRECTED INTEREST SPLIT
+  TEST_USDT: '0x1FfB8d2bF42B9FC139C4dE824592cba8d955d2F3', // Real USDT for mortgage system
+  ENHANCED_STAKING_POOL: '0x8b76570400264383f8Ad9cfDADD10BaD1dA6687C', // Real staking pool
+  ANCIENT_MORTGAGE: '0x8c3f17663FeF9f64b3615dBd70DeAEB4075D4F10', // Real mortgage contract
   
-  // Ancient Mortgage Protocol contracts (DEPLOYED TO FUJI TESTNET)
-  ANCIENT_MORTGAGE_PROTOCOL: '0x65F94D3F0f8E631f6053b9F4c56BaE9517EE08e7', // Deployed to Fuji testnet
-  MOCK_USDT: '0x0752217fdd32290cb832dd0AA91EBDd5E1A47199', // Deployed to Fuji testnet
-  
-  // Village Citizenship contract (DEPLOYED TO FUJI TESTNET)
-  VILLAGE_CITIZENSHIP: '0x2f89095302C43D4142fF80607ba0CFe475f3d21a', // Deployed to Fuji testnet
+  // Legacy contracts (keeping for backward compatibility)
+  MORTGAGE_PROTOCOL: '0x8c3f17663FeF9f64b3615dBd70DeAEB4075D4F10', // Updated to use real AncientMortgage
+  MAZUNTE_VILLAGE: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // VillageCitizenship
+  ANCIENT_MORTGAGE_PROTOCOL: '0x8c3f17663FeF9f64b3615dBd70DeAEB4075D4F10', // Real AncientMortgage
+  MOCK_USDT: '0x1FfB8d2bF42B9FC139C4dE824592cba8d955d2F3', // Real TestUSDT
+  VILLAGE_CITIZENSHIP: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // VillageCitizenship
 };
 
 // Network configuration
@@ -164,11 +166,11 @@ export class AncientMortgageProtocol {
   }
 
   // Property Purchase
-  async purchaseProperty(purchasePrice: number, downPayment: number) {
+  async purchaseProperty(purchasePrice: number, downPayment: number, propertyMetadata: string) {
     // First approve USDT spending
     await this.approveUSDT(downPayment);
     
-    const tx = await this.contract.purchaseProperty(purchasePrice, downPayment);
+    const tx = await this.contract.purchaseProperty(purchasePrice, downPayment, propertyMetadata);
     const receipt = await tx.wait();
     return receipt;
   }
