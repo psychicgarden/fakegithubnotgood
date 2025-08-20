@@ -94,7 +94,10 @@ export const VILLAGE_CITIZENSHIP_ABI = [
   "event VillageUpdated(uint256 indexed villageId, string name, uint256 membershipFee)"
 ];
 
-// Contract addresses (Avalanche Fuji Testnet)
+// TODO: Debug Internal JSON-RPC error - Bugbot analysis needed
+// Current issue: Contract addresses updated but still getting JSON-RPC errors
+// Need to investigate contract verification and interaction patterns
+
 export const CONTRACT_ADDRESSES = {
   // Legacy contracts (UPDATED WITH REAL FUJI ADDRESSES)
   MORTGAGE_PROTOCOL: '0x65F94D3F0f8E631f6053b9F4c56BaE9517EE08e7', // Updated to use AncientMortgageProtocol address
