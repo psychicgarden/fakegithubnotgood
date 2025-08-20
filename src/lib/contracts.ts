@@ -97,16 +97,17 @@ export const VILLAGE_CITIZENSHIP_ABI = [
 // Contract addresses (Avalanche Fuji Testnet) - Updated with newly deployed contracts
 
 export const CONTRACT_ADDRESSES = {
-  // Legacy contracts (UPDATED WITH REAL FUJI ADDRESSES)
-  MORTGAGE_PROTOCOL: '0x37b545334115457834b5A41cEce78758E068e7ff', // Updated to use AncientMortgageProtocol address
-  MAZUNTE_VILLAGE: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // Updated to use new VillageCitizenship address
+  // REAL MORTGAGE SYSTEM CONTRACTS (DEPLOYED TO FUJI TESTNET)
+  TEST_USDT: '0x108e7A23A05641625e631F885f40439dE9D1F972', // Real USDT for mortgage system
+  ENHANCED_STAKING_POOL: '0x229d57249a71F3A50B4978168902801e00E89934', // Real staking pool
+  ANCIENT_MORTGAGE: '0x28d022997CECb07fB1A54DB7F43eDD65Bef98EfA', // Real mortgage contract
   
-  // Ancient Mortgage Protocol contracts (DEPLOYED TO FUJI TESTNET)
-  ANCIENT_MORTGAGE_PROTOCOL: '0x37b545334115457834b5A41cEce78758E068e7ff', // Deployed to Fuji testnet
-  MOCK_USDT: '0x3eB9F6D4B94409045ADabb07802e7182B77fC3D0', // Deployed to Fuji testnet
-  
-  // Village Citizenship contract (DEPLOYED TO FUJI TESTNET)
-  VILLAGE_CITIZENSHIP: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // Deployed to Fuji testnet
+  // Legacy contracts (keeping for backward compatibility)
+  MORTGAGE_PROTOCOL: '0x28d022997CECb07fB1A54DB7F43eDD65Bef98EfA', // Updated to use real AncientMortgage
+  MAZUNTE_VILLAGE: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // VillageCitizenship
+  ANCIENT_MORTGAGE_PROTOCOL: '0x28d022997CECb07fB1A54DB7F43eDD65Bef98EfA', // Real AncientMortgage
+  MOCK_USDT: '0x108e7A23A05641625e631F885f40439dE9D1F972', // Real TestUSDT
+  VILLAGE_CITIZENSHIP: '0x5931D55254834D5CDF8492bD61e2b0793E7b36A1', // VillageCitizenship
 };
 
 // Network configuration
