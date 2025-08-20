@@ -1,0 +1,22 @@
+{
+  "name": "boho-shares-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for Boho Shares mortgage protocol",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:fuji": "hardhat run scripts/deploy.js --network fuji",
+    "deploy:ancient:fuji": "hardhat run scripts/deploy-ancient.js --network fuji",
+    "deploy:village:fuji": "hardhat run scripts/deploy-village-citizenship.js --network fuji",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "dotenv": "^16.3.1"
+  }
+} 

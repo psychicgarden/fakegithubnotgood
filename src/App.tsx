@@ -1,0 +1,42 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { WalletProvider } from "@/contexts/WalletContext";
+import Index from "./pages/Index";
+import InvestorPortal from "./pages/InvestorPortal";
+import TravelerPortal from "./pages/TravelerPortal";
+import HostDashboard from "./pages/HostDashboard";
+import Developers from "./pages/Developers";
+import ContractTest from "./pages/ContractTest";
+import AdminDashboard from "./pages/AdminDashboard";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <WalletProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/investor" element={<InvestorPortal />} />
+            <Route path="/traveler" element={<TravelerPortal />} />
+            <Route path="/host" element={<HostDashboard />} />
+            <Route path="/developers" element={<Developers />} />
+            <Route path="/test" element={<ContractTest />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </WalletProvider>
+  </QueryClientProvider>
+);
+
+export default App;
